@@ -1,9 +1,586 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Ready Now Build</title>
-  </head>
-  <body>
-    <h1>Coming Soon</h1>
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReadyNowBuild – Flat Pack Assembly, South East Melbourne</title>
+<meta name="description" content="Professional flat pack furniture assembly in South East Melbourne and Mornington Peninsula. IKEA, Temple & Webster, Bunnings, sheds, playgrounds & more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --navy-dark: #111b30;
+    --navy-mid: #243158;
+    --orange: #f5820a;
+    --orange-dark: #d46e06;
+    --orange-light: #fef3e2;
+    --white: #ffffff;
+    --offwhite: #f8f7f4;
+    --gray: #6b7280;
+    --gray-light: #e5e7eb;
+    --text: #1a2744;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--white); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy-dark);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 68px;
+    border-bottom: 3px solid var(--orange);
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo img { height: 52px; width: auto; display: block; }
+  .logo-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.6rem; color: var(--white); letter-spacing: -0.5px; }
+  .logo-text span { color: var(--orange); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta {
+    background: var(--orange); color: var(--white); border: none;
+    padding: 10px 22px; border-radius: 4px; font-weight: 600; font-size: 0.95rem;
+    cursor: pointer; text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--orange-dark); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 100%;
+    background: var(--navy-mid);
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 560px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,130,10,0.15); border: 1px solid var(--orange);
+    color: var(--orange); padding: 6px 14px; border-radius: 4px;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.95;
+    color: var(--white); margin-bottom: 0.5rem; letter-spacing: -1px;
+  }
+  .hero h1 span { color: var(--orange); }
+  .hero-sub {
+    font-size: 1.25rem; color: rgba(255,255,255,0.7);
+    margin: 1.2rem 0 2rem; line-height: 1.5;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--orange); color: var(--white);
+    padding: 14px 28px; border-radius: 4px; text-decoration: none;
+    font-weight: 700; font-size: 1rem; transition: background 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--orange-dark); }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    border: 2px solid rgba(255,255,255,0.3); padding: 14px 28px;
+    border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 1rem;
+    transition: border-color 0.2s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--white); }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--orange); }
+  .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .hero-image-area {
+    position: absolute; right: 4%; top: 50%; transform: translateY(-50%);
+    z-index: 3; width: 42%; max-width: 500px;
+  }
+  .hero-image-area img { width: 100%; border-radius: 8px; display: block; }
+  .tool-badge {
+    position: absolute; bottom: -16px; left: -20px;
+    background: var(--orange); color: var(--white);
+    padding: 12px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem;
+    box-shadow: 0 4px 20px rgba(245,130,10,0.4);
+  }
+
+  /* BRANDS */
+  .brands {
+    background: var(--navy-dark); padding: 1.5rem 5%;
+    display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .brands-label { color: rgba(255,255,255,0.4); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; white-space: nowrap; }
+  .brands-list { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+  .brand-pill {
+    background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.6);
+    padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; }
+  .section-label {
+    display: inline-block; color: var(--orange); font-weight: 700;
+    font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; color: var(--navy);
+  }
+  .section-title span { color: var(--orange); }
+
+  /* SERVICES */
+  .services { background: var(--offwhite); }
+  .services-header { text-align: center; margin-bottom: 3rem; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--white); border-radius: 8px; padding: 1.75rem;
+    border: 1px solid var(--gray-light); transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--orange);
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,39,68,0.1); }
+  .service-icon {
+    width: 52px; height: 52px; background: var(--orange-light); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 1rem;
+  }
+  .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy); }
+  .service-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+
+  /* HOW IT WORKS */
+  .how { background: var(--white); }
+  .how-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .steps { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .step { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .step-num {
+    width: 42px; height: 42px; min-width: 42px;
+    background: var(--navy); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.1rem;
+  }
+  .step-num.active { background: var(--orange); }
+  .step h4 { font-weight: 700; margin-bottom: 0.25rem; color: var(--navy); }
+  .step p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+  .how-visual {
+    background: var(--navy); border-radius: 12px; padding: 2.5rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .how-visual-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--white); margin-bottom: 0.5rem; }
+  .coverage-area {
+    background: rgba(255,255,255,0.06); border-radius: 8px; padding: 1rem 1.25rem;
+    border-left: 4px solid var(--orange);
+  }
+  .coverage-area h4 { color: var(--orange); font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; }
+  .coverage-area p { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5; }
+
+  /* SERVICES DETAIL */
+  .brands-section { background: var(--offwhite); }
+  .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .brand-card {
+    background: var(--white); border-radius: 8px; padding: 1.25rem 1.5rem;
+    border: 1px solid var(--gray-light); display: flex; align-items: center; gap: 12px;
+  }
+  .brand-dot { width: 10px; height: 10px; background: var(--orange); border-radius: 50%; min-width: 10px; }
+  .brand-card span { font-weight: 600; font-size: 0.95rem; color: var(--navy); }
+
+  /* TESTIMONIALS */
+  .reviews { background: var(--navy); padding: 80px 5%; }
+  .reviews-header { text-align: center; margin-bottom: 3rem; }
+  .reviews-header .section-title { color: var(--white); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .review-card {
+    background: rgba(255,255,255,0.06); border-radius: 8px; padding: 1.75rem;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .stars { color: var(--orange); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .review-card p { color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.25rem; }
+  .reviewer { display: flex; align-items: center; gap: 10px; }
+  .reviewer-avatar {
+    width: 38px; height: 38px; background: var(--orange); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem; color: var(--white);
+  }
+  .reviewer-name { font-weight: 600; color: var(--white); font-size: 0.9rem; }
+  .reviewer-loc { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info { padding-top: 1rem; }
+  .contact-info p { color: var(--gray); font-size: 1rem; line-height: 1.7; margin: 1rem 0 2rem; }
+  .contact-item { display: flex; align-items: center; gap: 14px; margin-bottom: 1.25rem; }
+  .contact-icon {
+    width: 44px; height: 44px; background: var(--orange-light); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem; min-width: 44px;
+  }
+  .contact-item-text { font-weight: 600; color: var(--navy); }
+  .contact-item-sub { font-size: 0.85rem; color: var(--gray); }
+  .contact-form { background: var(--offwhite); border-radius: 12px; padding: 2rem; }
+  .contact-form h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 10px 14px; border-radius: 6px;
+    border: 1.5px solid var(--gray-light); font-family: 'Barlow', sans-serif;
+    font-size: 0.95rem; color: var(--navy); background: var(--white);
+    transition: border-color 0.2s; outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--orange); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; padding: 13px; background: var(--orange); color: var(--white);
+    border: none; border-radius: 6px; font-family: 'Barlow', sans-serif;
+    font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s;
+  }
+  .form-submit:hover { background: var(--orange-dark); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy-dark); padding: 2.5rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    border-top: 3px solid var(--orange);
+  }
+  .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.4rem; color: var(--white); }
+  .footer-logo span { color: var(--orange); }
+  .footer-text { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--orange); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-image-area { display: none; }
+    .hero::before { width: 0; }
+    .how-inner { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <img src="logo.png" alt="ReadyNowBuild – Flat Pack Assembly Melbourne">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://www.facebook.com/YOUR-PAGE-NAME" target="_blank" style="color:#4a9eff;">&#128100; Facebook</a></li>
+  </ul>
+  <a href="mailto:readybuildnow@gmail.com" class="nav-cta">Get a Quote</a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').style.display='flex';document.querySelector('.nav-links').style.flexDirection='column';document.querySelector('.nav-links').style.position='fixed';document.querySelector('.nav-links').style.top='68px';document.querySelector('.nav-links').style.left='0';document.querySelector('.nav-links').style.right='0';document.querySelector('.nav-links').style.background='#111b30';document.querySelector('.nav-links').style.padding='1rem 5%';document.querySelector('.nav-links').style.zIndex='99';" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>&#128205;</span> South East Melbourne &amp; Mornington Peninsula
+    </div>
+    <h1>Flat Pack<br><span>Done Right.</span></h1>
+    <p class="hero-sub">Professional assembly of anything that comes in a box — kitchens, wardrobes, sheds, playgrounds and more.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">&#128222; Get a Free Quote</a>
+      <a href="#services" class="btn-secondary">See Services ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Jobs Completed</div>
+      </div>
+      <div>
+        <div class="stat-num">5★</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div>
+        <div class="stat-num">Same<br style="line-height:0">Day</div>
+        <div class="stat-label">Often Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS STRIP -->
+<div class="brands">
+  <span class="brands-label">WE BUILD FROM</span>
+  <div class="brands-list">
+    <span class="brand-pill">IKEA</span>
+    <span class="brand-pill">Bunnings</span>
+    <span class="brand-pill">Temple &amp; Webster</span>
+    <span class="brand-pill">Kmart</span>
+    <span class="brand-pill">Freedom</span>
+    <span class="brand-pill">Harvey Norman</span>
+    <span class="brand-pill">+ many more</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-title">We Build <span>Everything</span><br>Flat Pack</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🍳</div>
+      <h3>Kitchen Assembly</h3>
+      <p>Full flatpack kitchen installs including cabinets, benchtops, drawers and hardware. IKEA SEKTION, PAX and more.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚪</div>
+      <h3>Wardrobes &amp; Storage</h3>
+      <p>PAX, sliding door wardrobes, walk-in robes, laundry storage units and shelving systems.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛋️</div>
+      <h3>Furniture Assembly</h3>
+      <p>Beds, desks, dining tables, bookshelves, TV units, bathroom vanities — if it comes in a box, we build it.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>Sheds &amp; Outdoor</h3>
+      <p>Colorbond and Zinc sheds, Absco, Spanbilt and Stratco flatpack sheds assembled and anchored correctly.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛝</div>
+      <h3>Playgrounds &amp; Swing Sets</h3>
+      <p>Safe, secure assembly of swing sets, climbing frames, trampolines and outdoor play equipment.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <h3>Laundry &amp; Bathroom</h3>
+      <p>Laundry cabinets, tubs, bathroom storage, vanity units and shelving — fully fitted and functional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div>
+      <span class="section-label">The Process</span>
+      <h2 class="section-title">Simple,<br><span>Stress-Free</span></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num active">1</div>
+          <div>
+            <h4>Get in Touch</h4>
+            <p>Send an email or fill out the contact form with what you need built. Photos help but aren't required.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h4>Confirm &amp; Book</h4>
+            <p>We'll give you a quick, fair quote and lock in a time that suits you — including weekends.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h4>We Build It</h4>
+            <p>Turn up on time, build everything properly, take away the packaging. Job done.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="how-visual">
+      <div class="how-visual-title">Service Area</div>
+      <div class="coverage-area">
+        <h4>&#128205; Primary Coverage</h4>
+        <p>South East Melbourne — Frankston, Dandenong, Cranbourne, Narre Warren, Berwick, Pakenham</p>
+      </div>
+      <div class="coverage-area">
+        <h4>&#128205; Extended Coverage</h4>
+        <p>Mornington Peninsula — Mornington, Mount Martha, Rosebud, Rye, Sorrento &amp; surrounds</p>
+      </div>
+      <div class="coverage-area">
+        <h4>&#128205; Also Servicing</h4>
+        <p>Greater Melbourne and surrounding areas — ask us if you're unsure!</p>
+      </div>
+      <a href="#contact" style="display:inline-block;margin-top:0.5rem;background:var(--orange);color:#fff;padding:12px 22px;border-radius:6px;text-decoration:none;font-weight:700;font-size:0.95rem;">Check My Area →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS WE WORK WITH -->
+<section class="brands-section" id="brands">
+  <span class="section-label">Brands We Work With</span>
+  <h2 class="section-title">Every Brand,<br><span>No Problem</span></h2>
+  <p style="color:var(--gray);margin-top:0.75rem;max-width:560px;line-height:1.6;">If it comes with an instruction manual and a bag of screws, we can build it. Here are some of the brands we work with regularly:</p>
+  <div class="brands-grid">
+    <div class="brand-card"><div class="brand-dot"></div><span>IKEA</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>Bunnings Warehouse</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>Temple &amp; Webster</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>Kmart</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>Freedom Furniture</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>Harvey Norman</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>Fantastic Furniture</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>Officeworks</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>Absco Sheds</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>Stratco</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>Big W</span></div>
+    <div class="brand-card"><div class="brand-dot"></div><span>And Many More...</span></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header">
+    <span class="section-label">Happy Customers</span>
+    <h2 class="section-title" style="color:var(--white);">What People <span>Say</span></h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Absolutely brilliant service. Had our IKEA kitchen assembled in one day, all done perfectly. Highly recommend!"</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">SL</div>
+        <div>
+          <div class="reviewer-name">Sarah L.</div>
+          <div class="reviewer-loc">Frankston</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Turned up on time, built our Bunnings shed perfectly and took all the rubbish away. Will definitely use again."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">MR</div>
+        <div>
+          <div class="reviewer-name">Mark R.</div>
+          <div class="reviewer-loc">Narre Warren</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Had a wardrobe and two beds assembled. Fast, tidy and professional. The kids were so excited to have their rooms done!"</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">JP</div>
+        <div>
+          <div class="reviewer-name">Jessica P.</div>
+          <div class="reviewer-loc">Mornington</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title">Ready to <span>Book?</span></h2>
+      <p>Send us a message with what you need built and we'll get back to you with a fast, fair quote. No job too big or small.</p>
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-item-text"><a href="mailto:readybuildnow@gmail.com" style="color:var(--navy);text-decoration:none;">readybuildnow@gmail.com</a></div>
+          <div class="contact-item-sub">We reply within a few hours</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-item-text">South East Melbourne</div>
+          <div class="contact-item-sub">To Mornington Peninsula &amp; surrounds</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🗓️</div>
+        <div>
+          <div class="contact-item-text">Mon – Sun, 7am – 6pm</div>
+          <div class="contact-item-sub">Weekends &amp; same-day often available</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Request a Free Quote</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="jane@example.com">
+      </div>
+      <div class="form-group">
+        <label>Suburb</label>
+        <input type="text" placeholder="e.g. Frankston">
+      </div>
+      <div class="form-group">
+        <label>What do you need built?</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Kitchen Assembly</option>
+          <option>Wardrobe / Storage</option>
+          <option>Furniture (beds, desks, etc)</option>
+          <option>Shed Assembly</option>
+          <option>Playground / Swing Set</option>
+          <option>Laundry / Bathroom</option>
+          <option>Other / Multiple Items</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell us more (brand, number of items, etc)</label>
+        <textarea placeholder="e.g. 2x IKEA PAX wardrobes, 1x IKEA KALLAX shelf unit..."></textarea>
+      </div>
+      <button class="form-submit" onclick="window.location.href='mailto:readybuildnow@gmail.com?subject=Quote Request from ReadyNowBuild.com&body=Hi, I would like a quote for flat pack assembly.'">Send Quote Request →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ReadyNow<span>Build</span></div>
+  <div class="footer-text">© 2025 ReadyNowBuild.com · South East Melbourne &amp; Mornington Peninsula · <em>"Ready when you are"</em></div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="mailto:readybuildnow@gmail.com">Email Us</a>
+    <a href="https://www.facebook.com/YOUR-PAGE-NAME" target="_blank">&#128100; Facebook</a>
+  </div>
+</footer>
+
+</body>
 </html>
