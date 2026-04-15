@@ -33,14 +33,25 @@
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
 
-  .float-btn {
+  .float-btns {
     position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    display: flex; flex-direction: column; gap: 10px; align-items: flex-end;
+  }
+  .float-btn {
     background: var(--orange); color: var(--white); padding: 14px 22px; border-radius: 50px;
     text-decoration: none; font-weight: 700; font-size: 0.95rem;
     box-shadow: 0 4px 20px rgba(245,130,10,0.5); display: flex; align-items: center; gap: 8px;
     transition: background 0.2s, transform 0.2s;
   }
   .float-btn:hover { background: var(--orange-dark); transform: translateY(-2px); }
+  .float-btn.fb { background: #1877f2; box-shadow: 0 4px 20px rgba(24,119,242,0.5); }
+  .float-btn.fb:hover { background: #1464d0; }
+  .float-btn.call { background: #16a34a; box-shadow: 0 4px 20px rgba(22,163,74,0.5); }
+  .float-btn.call:hover { background: #15803d; }
+  @media (max-width: 600px) {
+    .float-btn span { display: none; }
+    .float-btn { padding: 14px 16px; border-radius: 50%; }
+  }
 
   .hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; padding: 100px 5% 60px; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 55%; height: 100%; background: var(--navy-mid); clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%); }
@@ -188,14 +199,25 @@
   @media (max-width: 600px) {
     .gallery-grid { grid-template-columns: 1fr; }
     .gallery-item.wide { grid-column: span 1; aspect-ratio: 4/3; }
-    .float-btn span { display: none; }
-    .float-btn { padding: 14px 16px; border-radius: 50%; }
   }
 </style>
 </head>
 <body>
 
-<a href="mailto:readybuildnow@gmail.com" class="float-btn">📧 <span>Email Us</span></a>
+<div class="float-btns">
+  <a href="https://www.facebook.com/profile.php?id=61572217238958" target="_blank" class="float-btn fb">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>Facebook</span>
+  </a>
+  <a href="tel:+61411251397" class="float-btn call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    <span>Call Now</span>
+  </a>
+  <a href="mailto:readybuildnow@gmail.com" class="float-btn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    <span>Email Us</span>
+  </a>
+</div>
 
 <nav>
   <a class="logo" href="#">
