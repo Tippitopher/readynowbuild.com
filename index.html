@@ -533,54 +533,52 @@
     </div>
     <div class="contact-form">
       <h3>Request a Free Quote</h3>
-      <form action="https://formspree.io/f/mnjlnkod" method="POST" enctype="multipart/form-data">
-        <div class="form-row">
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" name="first_name" placeholder="Jane" required>
-          </div>
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" name="last_name" placeholder="Smith" required>
-          </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="first_name" placeholder="Jane">
         </div>
         <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" name="email" placeholder="jane@example.com" required>
+          <label>Last Name</label>
+          <input type="text" id="last_name" placeholder="Smith">
         </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" name="phone" placeholder="e.g. 0412 345 678">
-        </div>
-        <div class="form-group">
-          <label>Suburb</label>
-          <input type="text" name="suburb" placeholder="e.g. Frankston" required>
-        </div>
-        <div class="form-group">
-          <label>What do you need built?</label>
-          <select name="service" required>
-            <option value="">Select a service...</option>
-            <option>Kitchen Assembly</option>
-            <option>Wardrobe / Storage</option>
-            <option>Furniture (beds, desks, etc)</option>
-            <option>Shed Assembly</option>
-            <option>Playground / Swing Set</option>
-            <option>Laundry / Bathroom</option>
-            <option>Other / Multiple Items</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Tell us more (brand, number of items, etc)</label>
-          <textarea name="message" placeholder="e.g. 2x IKEA PAX wardrobes, 1x IKEA KALLAX shelf unit..."></textarea>
-        </div>
-        <div class="form-group">
-          <label>Upload Photos (optional)</label>
-          <input type="file" name="photo" accept="image/*"
-            style="padding:8px;background:var(--white);cursor:pointer;border:1.5px dashed var(--gray-light);border-radius:6px;width:100%;">
-          <div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">📎 Attach one photo here, or email additional photos to <a href="mailto:readybuildnow@gmail.com" style="color:var(--orange);">readybuildnow@gmail.com</a></div>
-        </div>
-        <button type="submit" class="form-submit">Send Quote Request →</button>
-      </form>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="jane@example.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="e.g. 0412 345 678">
+      </div>
+      <div class="form-group">
+        <label>Suburb</label>
+        <input type="text" id="suburb" placeholder="e.g. Frankston">
+      </div>
+      <div class="form-group">
+        <label>What do you need built?</label>
+        <select id="service">
+          <option value="">Select a service...</option>
+          <option>Kitchen Assembly</option>
+          <option>Wardrobe / Storage</option>
+          <option>Furniture (beds, desks, etc)</option>
+          <option>Shed Assembly</option>
+          <option>Playground / Swing Set</option>
+          <option>Laundry / Bathroom</option>
+          <option>Other / Multiple Items</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell us more (brand, number of items, etc)</label>
+        <textarea id="message" placeholder="e.g. 2x IKEA PAX wardrobes, 1x IKEA KALLAX shelf unit..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Upload Photos (optional)</label>
+        <input type="file" id="photo" accept="image/*"
+          style="padding:8px;background:var(--white);cursor:pointer;border:1.5px dashed var(--gray-light);border-radius:6px;width:100%;">
+        <div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">📎 Attach your photo after your email opens, or send additional photos separately to <a href="mailto:readybuildnow@gmail.com" style="color:var(--orange);">readybuildnow@gmail.com</a></div>
+      </div>
+      <button class="form-submit" onclick="sendQuote()">Send Quote Request →</button>
     </div>
   </div>
 </section>
@@ -614,5 +612,29 @@
   </div>
 </footer>
 
+<script>
+function sendQuote() {
+  var first = document.getElementById('first_name').value;
+  var last = document.getElementById('last_name').value;
+  var email = document.getElementById('email').value;
+  var phone = document.getElementById('phone').value;
+  var suburb = document.getElementById('suburb').value;
+  var service = document.getElementById('service').value;
+  var message = document.getElementById('message').value;
+
+  var body = 'Hi ReadyNowBuild,%0A%0A'
+    + 'Name: ' + first + ' ' + last + '%0A'
+    + 'Email: ' + email + '%0A'
+    + 'Phone: ' + phone + '%0A'
+    + 'Suburb: ' + suburb + '%0A'
+    + 'Service Needed: ' + service + '%0A%0A'
+    + 'Details:%0A' + message + '%0A%0A'
+    + '(Please attach any photos to this email)';
+
+  window.location.href = 'mailto:readybuildnow@gmail.com'
+    + '?subject=Quote Request – ' + encodeURIComponent(service || 'Flat Pack Assembly')
+    + '&body=' + body;
+}
+</script>
 </body>
 </html>
