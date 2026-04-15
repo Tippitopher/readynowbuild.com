@@ -297,7 +297,7 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://www.facebook.com/profile.php?id=61572217238958" target="_blank" style="color:#4a9eff;">&#128100; Facebook</a></li>
   </ul>
-  <a href="mailto:readybuildnow@gmail.com" class="nav-cta">Get a Quote</a>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
   <button class="hamburger" onclick="document.querySelector('.nav-links').style.display='flex';document.querySelector('.nav-links').style.flexDirection='column';document.querySelector('.nav-links').style.position='fixed';document.querySelector('.nav-links').style.top='68px';document.querySelector('.nav-links').style.left='0';document.querySelector('.nav-links').style.right='0';document.querySelector('.nav-links').style.background='#111b30';document.querySelector('.nav-links').style.padding='1rem 5%';document.querySelector('.nav-links').style.zIndex='99';" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -571,12 +571,6 @@
       <div class="form-group">
         <label>Tell us more (brand, number of items, etc)</label>
         <textarea id="message" placeholder="e.g. 2x IKEA PAX wardrobes, 1x IKEA KALLAX shelf unit..."></textarea>
-      </div>
-      <div class="form-group">
-        <label>Upload Photos (optional)</label>
-        <input type="file" id="photo" accept="image/*"
-          style="padding:8px;background:var(--white);cursor:pointer;border:1.5px dashed var(--gray-light);border-radius:6px;width:100%;">
-        <div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">📎 Attach your photo after your email opens, or send additional photos separately to <a href="mailto:readybuildnow@gmail.com" style="color:var(--orange);">readybuildnow@gmail.com</a></div>
       </div>
       <button class="form-submit" onclick="sendQuote()">Send Quote Request →</button>
     </div>
