@@ -533,7 +533,7 @@
     </div>
     <div class="contact-form">
       <h3>Request a Free Quote</h3>
-      <form action="https://formspree.io/f/mnjlnkod" method="POST" enctype="multipart/form-data" id="quote-form">
+      <form action="https://formspree.io/f/mnjlnkod" method="POST" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-group">
             <label>First Name</label>
@@ -580,9 +580,6 @@
           <div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">📎 Attach one photo here, or email additional photos to <a href="mailto:readybuildnow@gmail.com" style="color:var(--orange);">readybuildnow@gmail.com</a></div>
         </div>
         <button type="submit" class="form-submit">Send Quote Request →</button>
-        <div id="form-success" style="display:none;margin-top:1rem;padding:12px;background:#d1fae5;border-radius:6px;color:#065f46;font-weight:600;text-align:center;">
-          ✅ Thanks! We'll be in touch shortly.
-        </div>
       </form>
     </div>
   </div>
@@ -617,19 +614,5 @@
   </div>
 </footer>
 
-<script>
-  const form = document.getElementById('quote-form');
-  if (form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const data = new FormData(form);
-      const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-      if (response.ok) {
-        form.style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-      }
-    });
-  }
-</script>
 </body>
 </html>
